@@ -30,7 +30,7 @@ function Appbar() {
         </h2>
       </div>
 
-      <div className="flex items-center p-2 rounded-lg bg-slate-100">
+      <div className="flex  items-center p-2 w-[240px] hover:w-1/2 duration-150 ease-in-out rounded-lg bg-slate-100">
         <AiOutlineSearch />
         <input type="text" className="text-md font-mono outline-none ml-2 bg-transparent" placeholder="Search Characters" />
       </div>
