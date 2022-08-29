@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Head from 'next/head'
 import { CgMenuGridR } from "react-icons/cg";
 import { AiOutlineSearch } from "react-icons/ai"
@@ -45,28 +46,31 @@ function Appbar() {
 }
 
 const allCharacters = [
-  { movie: "Tinkerbell", name: "Rosetta", img: "/pinnocio-lg.png", bgColorScheme: "bg-red-400", textColorScheme: "text-red-700" },
-  { movie: "Inside Out", name: "Sadness", img: "/pinnocio-lg.png", bgColorScheme: "bg-blue-400", textColorScheme: "text-blue-700" },
-  { movie: "Inside Out", name: "Disgust", img: "/pinnocio-lg.png", bgColorScheme: "bg-green-400", textColorScheme: "text-green-700" },
-  { movie: "Zootopia", name: "Judy", img: "/pinnocio-lg.png", bgColorScheme: "bg-purple-400", textColorScheme: "text-purple-700" },
-  { movie: "Moana", name: "Moana", img: "/pinnocio-lg.png", bgColorScheme: "bg-pink-400", textColorScheme: "text-pink-700" },
-  { movie: "Wreck it Raplh", name: "Vanellope", img: "/pinnocio-lg.png", bgColorScheme: "bg-orange-400", textColorScheme: "text-orange-700" },
+  {shadowColor:'shadow-red-400/50', movie: "Tinkerbell", name: "Rosetta", img: "/pinnocio-lg.png", bgColorScheme: "bg-red-400", textColorScheme: "text-red-700" },
+  {shadowColor:'shadow-blue-400/50', movie: "Inside Out", name: "Sadness", img: "/pinnocio-lg.png", bgColorScheme: "bg-blue-400", textColorScheme: "text-blue-700" },
+  {shadowColor:'shadow-green-400/50', movie: "Inside Out", name: "Disgust", img: "/pinnocio-lg.png", bgColorScheme: "bg-green-400", textColorScheme: "text-green-700" },
+  {shadowColor:'shadow-purple-400/50', movie: "Zootopia", name: "Judy", img: "/pinnocio-lg.png", bgColorScheme: "bg-purple-400", textColorScheme: "text-purple-700" },
+  {shadowColor:'shadow-pink-400/50', movie: "Moana", name: "Moana", img: "/pinnocio-lg.png", bgColorScheme: "bg-pink-400", textColorScheme: "text-pink-700" },
+  {shadowColor:'shadow-orange-400/50', movie: "Wreck it Raplh", name: "Vanellope", img: "/pinnocio-lg.png", bgColorScheme: "bg-orange-400", textColorScheme: "text-orange-700" },
 ]
 
 function CharactersListView() {
   return (
-    <div className="p-5 mt-5 flex">
+    <div className="p-5 mt-5 flex flex-row w-screen overflow-x-auto no-scrollbar ">
       {
-        allCharacters.map(({ movie, name, img, bgColorScheme, textColorScheme }, i) =>
-          <div key={i} className={`${bgColorScheme} ml-8 p-4 w-244px transform transition duration-750 hover:shadow-lg hover:scale-125 cursor-pointer rounded-lg shadow-md `}>
-            <img alt={name} src={img}/>
-            <h1 className={`text-4xl font-bold ${textColorScheme}`}>{name}</h1>
-            <section className="flex items-center">
+        allCharacters.map(({ movie,shadowColor, name, img, bgColorScheme, textColorScheme }, i) =>
+
+          <section key={i} className={`w-[280px] p-8 shrink-0  mx-6 rounded-lg shadow-lg  cursor-pointer ${shadowColor}  ${bgColorScheme}`}>
+            <img alt={name} className={'w-full shrink-0 h-[360px]'} src={img} />
+            <section className="">
               <p className="  font-semibold text-gray-700">Movie</p>
               <p className="font-bold text-white ml-2">{movie}</p>
             </section>
-          </div>)
-      }
+
+            <h1 className={`text-4xl font-bold ${textColorScheme}`}>{name}</h1>
+
+          </section>
+        )}
     </div>
   )
 }
